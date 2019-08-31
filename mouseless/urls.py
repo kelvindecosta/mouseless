@@ -19,6 +19,9 @@ from event import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register/',views.register_team),
-    
+    path('register/',views.register_team, name="register"),
+    path('login/',views.login_team , name="login"),
+    path('home/'views.home_page, name="home"),
+    path('details/'views.details,name="details")
+
 ]

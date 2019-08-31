@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+</head>
+<body>
+    <div class="container">
+            <div class="jumbotron pt-2 text-center">
+                <img src="{% static 'images/logo.png' %}" class="thumbnail rounded-circle float-right
+                 mr-2" style="width: 120px; height: 120px;">
+                <h2 class="mt-4">Welcome to ACM BPDC Mouseless Challenge</h2>
+            </div>
+            <h4>WELCOME TEAM {{tname}}</h4>
+                <center>
+                    <a href="#" class="btn btn-outline-secondary px-4 mr-3 mt-3" style="width: 200px">Add participants</a>
+                    <a href="#" class="btn btn-outline-secondary px-4 ml-3 mt-3" style="width: 200px">Start The Game</a>
+                </center>
+    </div>
+</body>
+</html>

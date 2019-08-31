@@ -13,9 +13,10 @@
             <h2 class="mt-4">Welcome to ACM BPDC Mouseless Challenge</h2>
         </div>
         <h2 class="bg-danger text-white text-center p-1 rounded mt-3">Login</h2>
+        <div style="color:red">{{msg}}</div>
         <div class="row">
             <div class="col-sm-12">
-                 <form method="POST
+                 <form method="POST">
                         {% csrf_token %}   
                     <div class="form-group">
                         <label>Team Name</label>
@@ -27,7 +28,7 @@
                     </div>
                     <input type="submit" value="Login" class="btn-block btn btn-danger">
                 </form>
-                If not registered<a href="#"> Click Here </a>
+                If not registered<a href="/register"> Click Here </a>
             </div>
         </div>
     </div>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron pt-2 text-center">
+            <img src="{% static 'images/logo.png' %}" class="thumbnail rounded-circle float-right
+             mr-2" style="width: 120px; height: 120px;">
+            <h2 class="mt-4">Welcome to ACM BPDC Mouseless Challenge</h2>
+        </div>
+        <form method="POST">
+            {% csrf token %}
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2 class="bg-danger text-white text-center p-1 rounded mt-3">Player 1</h2>
+                    <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" placeholder="Name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="College Email" class="form-control">                            
+                    </div>
+                    <div class="form-group">
+                            <label>Contact Number</label>
+                            <input type="text" placeholder="Phone Number" class="form-control">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <h2 class="bg-danger text-white text-center p-1 rounded mt-3">Player 2</h2>
+                    <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" placeholder="Name" class="form-control">                            
+                    </div>
+                    <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="College Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                            <label>Contact Number</label>
+                            <input type="text" placeholder="Phone Number" class="form-control">                            
+                    </div>
+                </div>    
+            </div>
+            <a href="/home"><input type="submit" value="Lets Begin"></a>
+        </form>
+    </div>
+</body>
+</html>
