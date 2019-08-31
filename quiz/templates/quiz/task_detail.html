@@ -1,0 +1,12 @@
+{% extends "quiz/base.html" %}
+{% block content %}
+  <h2 class="article-title mb-4">{{ object.name }}</h2>
+  <article class="media content-section">
+    <div class="media-body">
+      {% if user.is_superuser %}
+        <div>Answer : {{ task.correct }}</div>
+      {% endif %}
+      <p class="article-content">{{ object.formatted_markdown|safe }}</p>
+    </div>
+  </article>
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends "quiz/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h2 class="article-title mb-4">Welcome to Mouseless, {{ user.username }}</h2>
+<article class="media content-section">
+  <div class="media-body d-flex flex-column text-justify">
+    <p class="my-3">Now that you have successfully logged in and provided your player information, you can attempt the challenge.</p>
+    <p class="my-3">Before you do so, go over the following pointers:</p>
+    <ul class="my-3">
+        <li>You will be competing against other "users", who may be an individual or a pair</li>
+        <li>Each task is worth a certain amount of points based on its difficulty</li>
+        <li>The user with the most number of points wins!</li>
+        <li>A timer starts the moment you visit the challenge</li>
+        <li>In the event of a tie, the user who submitted their last answer first wins</li>
+    </ul>
+    <p class="my-3">If you have any doubts, contact the nearest ACM council member</p>
+    <a class="m-3 align-self-center" href="{% url 'task-list' %}">
+        <button class="btn btn-outline-danger">
+            Start Challenge
+        </button>
+    </a>
+  </div>
+</article>
+{% endblock content %}
