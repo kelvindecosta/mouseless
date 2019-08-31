@@ -1,0 +1,37 @@
+{% extends "quiz/base.html" %}
+{% block content %}
+    <h2>Players</h2>
+    {% for player in players %}
+        <div class="media-body mb-4 mt-4 d-flex bd-highlight border justify-content-between">
+            <div class="p-3 bd-highlight">
+                <h4>{{ player.name }}</h4>
+                <div> ID : {{ player.institute_id }}</div>
+                <div> Contact : {{ player.contact }}</div>
+            </div>
+            <div class="p-3 bd-highlight d-flex flex-column">
+                <div class="p-2 bd-highlight d-flex">
+                    <a href="{% url 'player-update' player.pk %}">
+                        <button class="btn btn-outline-info">
+                            Update
+                        </button>
+                    </a>
+                </div>
+                <div class="p-2 bd-highlight d-flex">
+                    <a href="{% url 'player-delete' player.pk %}">
+                        <button class="btn btn-outline-danger">
+                            Delete
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% if players|length < 2%}
+        <a href="{% url 'player-create' %}">
+            <button class="btn btn-outline-primary">
+                New
+            </button>
+        </a>
+    {% endif%}
+{% endblock content %}
