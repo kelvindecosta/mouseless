@@ -1,0 +1,30 @@
+{% extends "quiz/base.html" %}
+{% block content %}
+{% if leaderboard %}
+<h2 class="article-title mb-4">Leaderboard</h2>
+<table class="table table-bordered table-hover table-light">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Score</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for card in leaderboard %}
+            <tr {% if user == card.user %} class="table-success" {% endif %}>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ card.user.username }}</td>
+                <td>{{ card.score }}</td>
+                <td>{{ card.last_time }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="content-section">
+    No one has completed a task yet. Be the first.
+</div>
+{% endif %}
+{% endblock content %}

@@ -1,14 +1,33 @@
 {% extends "quiz/base.html" %}
 {% block content %}
-    <h2>Tasks</h2>
-    {% for task in tasks %}
-        <div class="media-body mb-4 mt-4 d-flex bd-highlight border justify-content-between align-items-center">
-            <h4 class="p-3 bd-highlight">
-                <a class="article-title" href="{% url 'task-detail' task.id %}">
-                    {{ task.name }}
-                </a>
-            </h4>
-            <div class="p-3 bd-highlight">{{ task.points }} pts</div>
+<h2>Tasks</h2>
+<div class="row">
+    <div class="col-md-8">
+        {% for task in tasks %}
+            <div class="mb-4 mt-4 d-flex bd-highlight border justify-content-between align-items-center content-section">
+                <h4 class="p-3 bd-highlight">
+                    <a class="article-title" href="{% url 'task-detail' task.id %}">
+                        {{ task.name }}
+                    </a>
+                </h4>
+                <div class="p-3 bd-highlight">{{ task.points }} pts</div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-4">
+        <div class="mb-4 mt-4 d-flex flex-column justify-content-between content-section">
+            <h3 class="p-3 align-self-center">Your Card</h3>
+            <div class="d-flex justify-content-between">
+                <div class="p-1 bd-highlight">Score</div>
+                <div class="p-1 bd-highlight">{{card.score}} points</div>
+            </div>
+            {% if card.score > 0 %}
+            <div class="d-flex justify-content-between">
+                <div class="p-1 bd-highlight">Time</div>
+                <div class="p-1 bd-highlight">{{ card.last_time }}</div>
+            </div>
+            {% endif %}
         </div>
-    {% endfor %}
+    </div>
+</div>
 {% endblock content %}

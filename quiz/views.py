@@ -8,7 +8,7 @@ from django.views.generic import (
     DetailView
 )
 from .forms import UserRegisterForm
-from .models import Task
+from .models import Task, Card
 
 
 @login_required
@@ -45,6 +45,15 @@ class TaskListView(LoginRequiredMixin, UserPassesTestMixin, ListView):
     def handle_no_permission(self):
         return redirect('player-list')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if not self.request.user.is_superuser:
+            card, _ = Card.objects.get_or_create(user=self.request.user)
+            context['card'] = card
+
+        return context
+
+
 
 class TaskDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = Task
@@ -57,3 +66,13 @@ class TaskDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     
     def handle_no_permission(self):
         return redirect('player-list')
+
+def leaderboard(request):
+    leaderboard = list(filter(lambda t: t.score > 0, Card.objects.all()))
+    if len(leaderboard) > 0:
+        leaderboard = sorted(leaderboard, key=lambda t: (t.score, t.last_time))[:10]
+    context= {
+        'leaderboard' : leaderboard
+    }
+    
+    return render(request, 'quiz/leaderboard.html', context=context)
