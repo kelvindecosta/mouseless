@@ -7,10 +7,10 @@ from markdownx.utils import markdownify
 from datetime import datetime
 
 class Task(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=256)
     text = MarkdownxField()
     points = models.IntegerField()
-    correct = models.CharField(max_length=20)
+    correct = models.CharField(max_length=256)
 
     @property
     def formatted_markdown(self):
@@ -43,7 +43,7 @@ class Card(models.Model):
 class Answer(models.Model):
     card = models.ForeignKey(Card, on_delete=models.CASCADE)
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
-    value = models.CharField(max_length=20)
+    value = models.CharField(max_length=256)
     submit = models.DateTimeField(auto_now=True)
 
     class Meta:

@@ -1,12 +1,38 @@
 {% extends "quiz/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-  <h2 class="article-title mb-4">{{ object.name }}</h2>
-  <article class="media content-section">
-    <div class="media-body">
-      {% if user.is_superuser %}
-        <div>Answer : {{ task.correct }}</div>
-      {% endif %}
-      <p class="article-content">{{ object.formatted_markdown|safe }}</p>
+<h2 class="mb-4">{{ object.name }}</h2>
+{% if form.instance.value == form.instance.task.correct %}
+  <div class="text-success my-4"> Status : Complete </div>
+{% else %}
+  <div class="text-danger my-4"> Status : Incomplete </div>
+{% endif %}
+<div class="row">
+    <div class="col">
+        <article class="media content-section">
+          <div class="media-body">
+            {% if user.is_superuser %}
+              <div>Answer : {{ task.correct }}</div>
+            {% endif %}
+            <p class="article-content">{{ object.formatted_markdown|safe }}</p>
+          </div>
+        </article>
     </div>
-  </article>
+    {% if form.instance.value != form.instance.task.correct %}
+    <div class="col-md-4">
+      <div class="content-section d-flex flex-column justify-content-between">
+        <form method="POST">
+          {% csrf_token %}
+          <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Answer</legend>
+            {{ form|crispy }}
+          </fieldset>
+          <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">Submit</button>
+          </div>
+        </form>
+        </div>
+    </div>
+    {% endif %}
+</div>
 {% endblock content %}

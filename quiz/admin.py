@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Task, Card
+from .models import Task, Card, Answer
 from markdownx.admin import MarkdownxModelAdmin
 
 @admin.register(Task)
@@ -12,3 +12,8 @@ class TaskAdmin(MarkdownxModelAdmin):
 class CardAdmin(MarkdownxModelAdmin):
     fields = ('user',)
     list_display = ('user', 'score', 'start', 'last_time')
+
+@admin.register(Answer)
+class AnswerAdmin(MarkdownxModelAdmin):
+    fields = ('card', 'task', 'value',)
+    list_display = ('card', 'task', 'value',)
