@@ -109,8 +109,7 @@ class TaskDetailView(LoginRequiredMixin, UserPassesTestMixin, FormMixin, DetailV
 def leaderboard(request):
     leaderboard = list(filter(lambda t: t.score > 0, Card.objects.all()))
     if len(leaderboard) > 0:
-        leaderboard = sorted(leaderboard, key=lambda t: t.score)[::-1][:10]
-        leaderboard = sorted(leaderboard, key=lambda t: t.last_time)
+        leaderboard = sorted(leaderboard, key=lambda t: (-t.score, t.last_time))[:10]
     context= {
         'leaderboard' : leaderboard
     }
