@@ -3,3 +3,4 @@ django-crispy-forms
 django-phonenumber-field
 phonenumbers
 django-markdownx
+python-frontmatter
