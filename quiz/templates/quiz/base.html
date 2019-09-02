@@ -24,13 +24,13 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="{% url 'player-list' %}">Players</a>
                 <a class="nav-item nav-link" href="{% url 'task-list' %}">Tasks</a>
                 <a class="nav-item nav-link" href="{% url 'leaderboard' %}">Leaderboard</a>
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               {% if user.is_authenticated %}
+              <a class="nav-item nav-link" href="{% url 'player-list' %}">Players</a>
                 <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
               {% else %}
                 <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
@@ -43,7 +43,7 @@
     </header>
     <main role="main" class="container">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 p-0">
           {% if messages %}
             {% for message in messages %}
               <div class="alert alert-{{ message.tags }}">

@@ -1,24 +1,42 @@
 {% extends "quiz/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h2 class="article-title mb-4">Welcome to Mouseless, {{ user.username }}</h2>
+<h2 class="article-title mb-4">Welcome to Mouseless</h2>
 <article class="media content-section">
-  <div class="media-body d-flex flex-column text-justify">
-    <p class="my-3">Now that you have successfully logged in and provided your player information, you can attempt the challenge.</p>
-    <p class="my-3">Before you do so, go over the following pointers:</p>
-    <ul class="my-3">
-        <li>You will be competing against other "users", who may be an individual or a pair</li>
-        <li>Each task is worth a certain amount of points based on its difficulty</li>
-        <li>The user with the most number of points wins!</li>
-        <li>A timer starts the moment you visit the challenge</li>
-        <li>In the event of a tie, the user who submitted their last answer first wins</li>
-    </ul>
-    <p class="my-3">If you have any doubts, contact the nearest ACM council member</p>
-    <a class="m-3 align-self-center" href="{% url 'task-list' %}">
-        <button class="btn btn-outline-danger">
-            Start Challenge
-        </button>
-    </a>
+    <div class="media-body d-flex flex-column text-justify">
+        <p class="text-success">You have successfully logged in and given us your contact details.</p>
+        <p>Before you attempt the challenge, go through the following information.</p>
+        <h4>Users</h4>
+        <ul>
+            <li>You will be competing against other users.</li>
+            <li>Users can register either as <strong>individuals</strong> or as <strong>pairs</strong>.</li>
+        </ul>
+        <hr/>
+        <h4>Points</h4>
+        <ul>
+            <li>Each task is worth a certain amount of <strong>points</strong></li>
+            <li>The user with the most points wins</li>
+        </ul>
+        <hr/>
+        <h4>Time</h4>
+        <ul>
+            <li>A <em>hidden timer</em> will start, the moment you visit the challenge</li>
+            <li>You will be judged by the <em>time elapsed from the start of the challenge till the time you completed the most recent challenge</em>.</li>
+            <li>This ensures that <em>everyone has a fair chance at the grand prize, regardless of when they start the challenge</em></li>
+            <li>In the event of a tie in points, the user who submitted their last answer first wins</li>
+        </ul>
+        <hr/>
+        <h4>Rules</h4>
+        <ul>
+            <li>The only rule is that you <strong>can't use a mouse</strong></li>
+        </ul>
+        <hr/>
+        <p>Before you start the challenge, call the nearest ACM council member to ensure that you have indeed disconnected your mouse.</p>
+        <a class="m-3 align-self-center" href="{% url 'task-list' %}">
+            <button class="btn btn-outline-danger">
+                Start Challenge
+            </button>
+        </a>
   </div>
 </article>
 {% endblock content %}
